@@ -2,8 +2,8 @@ $(document).ready(function () {
   var components = $('[data-component-embed="CTA"]');
 
   components.each(function () {
-    if ($(this).attr("data-component-type") == "Simple") {
-      var type = $(this).attr("data-component-type");
+    var type = $(this).attr("data-component-type");
+      if (type == "Simple") {
       var category = $(this).attr("data-component-category");
       var variation = $(this).attr("data-component-variation");
 
