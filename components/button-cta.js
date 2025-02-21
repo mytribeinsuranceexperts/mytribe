@@ -7,7 +7,7 @@ $(document).ready(function () {
       var category = $(this).attr("data-component-category");
       var variation = $(this).attr("data-component-variation");
 
-      const graphicCtaMapping = {
+      const buttonCtaMapping = {
         "Health Insurance 1": {
           buttonText: "Compare Quotes",
           buttonUrl:
@@ -120,9 +120,9 @@ $(document).ready(function () {
 
       var componentName = category + " " + variation;
 
-      var buttonText = graphicCtaMapping[componentName].buttonText;
-      var buttonUrl = graphicCtaMapping[componentName].buttonUrl;
-      var buttonColor = graphicCtaMapping[componentName].buttonColor;
+      var buttonText = buttonCtaMapping[componentName].buttonText;
+      var buttonUrl = buttonCtaMapping[componentName].buttonUrl;
+      var buttonColor = buttonCtaMapping[componentName].buttonColor;
 
       console.log("Selected Component Name is: " + componentName);
 
