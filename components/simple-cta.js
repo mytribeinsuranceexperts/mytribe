@@ -2,9 +2,10 @@ $(document).ready(function () {
   var components = $('[data-component-embed="CTA"]');
 
   components.each(function () {
-    var type = $(this).attr("data-component-type");
-    var category = $(this).attr("data-component-category");
-    var variation = $(this).attr("data-component-variation");
+    if ($(this).attr("data-component-type") == "Simple") {
+      var type = $(this).attr("data-component-type");
+      var category = $(this).attr("data-component-category");
+      var variation = $(this).attr("data-component-variation");
 
       const simpleCtaMapping = {
         "Health Insurance 1": {
@@ -138,11 +139,11 @@ $(document).ready(function () {
       if (graphics) {
         if (graphics == "Wellsoon Logo") {
           graphicsCode = `
-          <div class="simple-cta_corner">
-            <div>in partnership with</div>
-            <img src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/66d848867859f2219fb54220_practice%20plus-%20wellsoon%20logo.png" loading="lazy" alt="Wellsoon from Practice Plus Group Logo" class="simple-cta_corner-image">
-          </div>
-          `;
+            <div class="simple-cta_corner">
+              <div>in partnership with</div>
+              <img src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/66d848867859f2219fb54220_practice%20plus-%20wellsoon%20logo.png" loading="lazy" alt="Wellsoon from Practice Plus Group Logo" class="simple-cta_corner-image">
+            </div>
+            `;
           graphicsAdjustment = "wellsoon";
         }
       }
@@ -158,41 +159,42 @@ $(document).ready(function () {
         }
 
         reviewsCode = `
-        <div class="simple-cta_rating">
-              <p class="no-margin">Rated Excellent</p>
-              <div class="simple-cta_rating-stars ${starsColor}">
-                <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
-                <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
-                <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
-                <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
-                <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
-              </div>
-              <p class="no-margin">on</p>
-              <img width="80" loading="lazy" alt="Google logo" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50b106c627b555f5c4354_google%20logo.svg" class="simple-cta_rating-google">
-          </div>
-        `;
+          <div class="simple-cta_rating">
+                <p class="no-margin">Rated Excellent</p>
+                <div class="simple-cta_rating-stars ${starsColor}">
+                  <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
+                  <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
+                  <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
+                  <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
+                  <div class="star-div"><img loading="lazy" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50a5e74891b519fa714f5_google%20rating%20star.svg" alt="Google Review Star icon" class="google-star"></div>
+                </div>
+                <p class="no-margin">on</p>
+                <img width="80" loading="lazy" alt="Google logo" src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/60a50b106c627b555f5c4354_google%20logo.svg" class="simple-cta_rating-google">
+            </div>
+          `;
       }
 
       const newHTML = `
-      <div class="simple-cta_wrapper">
-      <div class="simple-cta_background-color ${backgroundColor}"></div>
-      <img src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/6674117958f5d4e09dd18ca2_mytribe-email-sig-bg.svg" loading="lazy" width="203" height="150" alt="" class="simple-cta_background-image">
-      <div class="simple-cta_top ${graphicsAdjustment}">
-         <h2 class="cta-custom-heading simple">${heading}</h2>
-      </div>
-      <div class="simple-cta_p ${graphicsAdjustment}">
-         <p class="text-size-medium no-margin">${paragraph}</p>
-      </div>
-      <div class="simple-cta_left">
-        ${reviewsCode}
-      </div>
-      <div class="simple-cta_right ${buttonColor}">
-        <a href="${buttonUrl}" class="button simple-cta w-button">${buttonText}</a>
-      </div>
-      ${graphicsCode}
-   </div>
-      `;
+        <div class="simple-cta_wrapper">
+        <div class="simple-cta_background-color ${backgroundColor}"></div>
+        <img src="https://cdn.prod.website-files.com/60a0cd9e83c3b8a9bf15f80e/6674117958f5d4e09dd18ca2_mytribe-email-sig-bg.svg" loading="lazy" width="203" height="150" alt="" class="simple-cta_background-image">
+        <div class="simple-cta_top ${graphicsAdjustment}">
+           <h2 class="cta-custom-heading simple">${heading}</h2>
+        </div>
+        <div class="simple-cta_p ${graphicsAdjustment}">
+           <p class="text-size-medium no-margin">${paragraph}</p>
+        </div>
+        <div class="simple-cta_left">
+          ${reviewsCode}
+        </div>
+        <div class="simple-cta_right ${buttonColor}">
+          <a href="${buttonUrl}" class="button simple-cta w-button">${buttonText}</a>
+        </div>
+        ${graphicsCode}
+     </div>
+        `;
 
       $(this).html(newHTML);
+    }
   });
 });
